@@ -1,0 +1,49 @@
+import turtle
+import random
+import time
+t=turtle.Turtle()
+t.speed(100)
+screen=turtle.Screen()
+screen.bgcolor("black")
+
+def draw_circle():
+    t.penup()
+    t.goto(random.randint(-200,200),random.randint(-200,200))
+    #Choose a random color for the circle
+    r=random.randint(0,255)
+    g=random.randint(0,255)
+    b=random.randint(0,255)
+    screen.colormode(255)
+    t.pencolor(r,g,b)
+    t.fillcolor(r,g,b)
+
+    #Draw the cirle
+    t.begin_fill()
+    t.pendown()
+    t.circle(random.randint(40,80))
+    t.penup()
+    t.end_fill()
+    t.hideturtle()
+
+#initial delay in seconds
+delay=0.9
+
+#track time
+start_time=time.time()
+
+#loop to draw circle with decreasing delay
+for i in range(50):
+    draw_circle()
+    time.sleep(delay)
+    t.clear()
+    delay=max(0.01, delay-0.05)
+end_time=time.time()
+elapsed_time=round(end_time-start_time,2)
+t.penup()
+t.goto(0,0)
+t.color("white")
+t.write(f"Total animation time:{elapsed_time} seconds",align="center",font=("Arial",16,"bold"))
+time.sleep(2)
+turtle.done()
+
+    
