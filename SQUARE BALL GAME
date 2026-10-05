@@ -1,0 +1,59 @@
+import turtle
+import random
+import time
+
+
+screen = turtle.Screen()
+screen.bgcolor("black")
+screen.colormode(255)
+
+t = turtle.Turtle()
+t.speed(0)
+t.hideturtle()
+
+
+def draw_square():
+    """Draw one filled square at a random position, size, colour and tilt."""
+    t.penup()
+    t.goto(random.randint(-200, 200), random.randint(-200, 200))
+    t.setheading(random.randint(0, 360))   # random tilt makes the squares "dance"
+
+    # Random colour
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    t.pencolor(r, g, b)
+    t.fillcolor(r, g, b)
+
+    # Draw the square
+    size = random.randint(40, 100)
+    t.begin_fill()
+    t.pendown()
+    for _ in range(4):
+        t.forward(size)
+        t.left(90)
+    t.penup()
+    t.end_fill()
+
+
+
+delay = 0.9
+start_time = time.time()
+
+for i in range(50):
+    draw_square()
+    time.sleep(delay)
+    t.clear()
+    delay = max(0.01, delay - 0.05)  
+
+elapsed_time = round(time.time() - start_time, 2)
+
+
+t.penup()
+t.goto(0, 0)
+t.color("white")
+t.write(f"Total animation time: {elapsed_time} seconds",
+        align="center", font=("Arial", 16, "bold"))
+
+time.sleep(2)
+turtle.done()
