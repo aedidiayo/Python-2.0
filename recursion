@@ -1,0 +1,10 @@
+#recursion
+def countdown(n):
+    if n == 0: #base case
+        print("happy new year!")
+        return
+    print(n)
+    countdown(n-1) #recursive call
+
+#test the function
+countdown(5)
