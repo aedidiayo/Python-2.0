@@ -21,7 +21,7 @@ ball=turtle.Turtle()
 ball.shape("circle")
 ball.color("white")
 ball.penup()
-ball.goto(1,300)
+ball.goto(0,0)
 ball.dx=3
 ball.dy=-3
 
@@ -49,7 +49,7 @@ score_display.goto(50,200)
 
 def update_score():
     score_display.clear()   
-    score_display.write(f"SCORE.{score}, LIVES:{5-death}",align="center",font=("Arial",24,"bold"))
+    score_display.write(f"SCORE.{score}, LIVES:{10-death}",align="center",font=("Arial",24,"bold"))
 
 update_score()
 game_started=False
@@ -114,6 +114,22 @@ while True:
     if (-260 < ball.ycor() < -230) and\
         (pad.xcor() -50<ball.xcor() <pad.xcor() +50):
         ball.dy*=-1
+
+    #brick Collision
+    for brick in bricks:
+        if brick.isvisible() and\
+        abs(ball.xcor() -brick.xcor()) < 40 and \
+        abs(ball.ycor() -brick.ycor()) < 20:
+            ball.dy *= -1
+            brick.hideturtle()
+            bricks.remove(brick)
+            score +=100
+            update_score()
+    #win condition
+    if not bricks:
+        score_display.goto(0,0)
+        score_display.write("YOU WIN!", align="center", font=("Arial",30,"bold"))
+     
         
 
 
