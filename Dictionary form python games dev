@@ -1,0 +1,19 @@
+ dict1={"name":"Ayantoye Edidi",
+       "age":22,
+       "Country":"Nigeria",
+       "Hobbies":"Reading"}
+print (f"dictionary={dict1}\n")
+
+#adding new item into dict1
+dict1["fav food"]="rice&stew"
+print(f"dict after ne w item+{dict1}\n")
+
+#to retrieve only keys
+print(f"keys={dict1.keys()}\n")
+
+#to retrieve only values
+print(f"values={dict1.values()}\n")
+
+#updatingan item of a dictionary
+dict1["fav food"] = "chinese food"
+print(f"updated food item = {dict1}\n")
