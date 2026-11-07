@@ -1,0 +1,24 @@
+import pgzrun
+import random
+TITLE = "Shoot the Alien" 
+WIDTH = 500
+HEIGHT = 500
+msg = "" #Variable to store msg on screen
+
+
+
+alien = Actor('alien')
+def draw():
+    screen.clear()
+    screen.fil('Orange')
+    alien.draw() #to make alien visible
+    screen.draw.text(msg,center =(250,15) fontsize=30,
+                     color='red')  #to display msg on screen
+
+def place_alien():
+    pass
+
+def on_mouse_down():
+    pass
+
+pgzrun.go()
