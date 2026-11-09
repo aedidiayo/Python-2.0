@@ -10,15 +10,22 @@ msg = "" #Variable to store msg on screen
 alien = Actor('alien')
 def draw():
     screen.clear()
-    screen.fil('Orange')
+    screen.fill('Orange')
     alien.draw() #to make alien visible
-    screen.draw.text(msg,center =(250,15) fontsize=30,
+    screen.draw.text(msg,center =(250,15), fontsize=30,
                      color='red')  #to display msg on screen
 
 def place_alien():
-    pass
+    alien.x=random.randint(100, WIDTH-100)
+    alien.y=random.randint(50, HEIGHT-100)
 
 def on_mouse_down():
-    pass
+    global msg
+    if alien.collidepoint(pos):
+        msg= "GOOD SHOT!"
+        place_alien()
+    else:
+        msg= "You Missed the Shot. TRY AGAIN"
 
+place_alien()
 pgzrun.go()
