@@ -19,7 +19,7 @@ def place_alien():
     alien.x=random.randint(100, WIDTH-100)
     alien.y=random.randint(50, HEIGHT-100)
 
-def on_mouse_down():
+def on_mouse_down(pos):
     global msg
     if alien.collidepoint(pos):
         msg= "GOOD SHOT!"
